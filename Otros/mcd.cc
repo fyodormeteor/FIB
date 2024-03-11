@@ -1,5 +1,5 @@
 /*  Minimo comun divisor
-    27.11.2024
+    27.11.2023
 
     https://github.com/fyodormeteor
 */
