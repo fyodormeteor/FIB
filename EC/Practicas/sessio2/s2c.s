@@ -112,7 +112,7 @@ update:
 	lw	$t2, 0($t0)
 	ble	$t1, $t2, else1
 	move	$v0, $s1
-	bc1f	endif
+	b endif
 else1:	move	$v0, $s2
 endif:
 	
