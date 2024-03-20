@@ -1,12 +1,12 @@
 /*  Cerca en una llista de parells d'enters 
     06.03.2024
 
-    Entregar program.tar
-
     https://github.com/fyodormeteor
 */
 
 #include "LlistaIOParInt.hh"
+#include <iostream>
+#include <list>
 
 void LlegirLlistaParInt(list<ParInt>& l)
 {

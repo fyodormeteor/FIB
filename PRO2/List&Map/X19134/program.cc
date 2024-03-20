@@ -1,8 +1,6 @@
 /*  Cerca en una llista de parells d'enters 
     06.03.2024
 
-    Entregar program.tar
-
     https://github.com/fyodormeteor
 */
 

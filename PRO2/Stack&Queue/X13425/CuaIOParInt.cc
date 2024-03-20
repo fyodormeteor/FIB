@@ -1,3 +1,9 @@
+/*  Distribucio justa de cues
+    28.02.2024
+
+    https://github.com/fyodormeteor
+*/
+
 #include "CuaIOParInt.hh"
 
 void llegirCuaParInt(queue<ParInt>& c)
