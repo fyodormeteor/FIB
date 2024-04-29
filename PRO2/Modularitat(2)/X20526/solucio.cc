@@ -1,3 +1,5 @@
+// todo: fix xd
+
 #include "Cjt_estudiants.hh"
 #include <algorithm>
 
@@ -6,7 +8,6 @@
    si b = fals, s'ha afegit l'estudiant est al paràmetre implícit */
 void Cjt_estudiants::afegir_estudiant(const Estudiant &est, bool& b)
 {
-   if (nest >= MAX_NEST) throw PRO2Excepcio("Conjunt ple");
    int i = nest-1;
    int dni = est.consultar_DNI();
 

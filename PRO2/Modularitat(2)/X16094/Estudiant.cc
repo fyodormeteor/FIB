@@ -1,3 +1,9 @@
+/*  Modificacions de la classe Estudiant 
+    17.04.2024
+
+    https://github.com/fyodormeteor
+*/
+
 #include "Estudiant.hh"
 
 /* Constants */
@@ -9,7 +15,7 @@ const char *ER4 = "El DNI es incorrecte";
 
 Estudiant::Estudiant(){
   dni=0;
-  nota = -7;
+  nota = -1;
 }
 
 Estudiant::Estudiant(int dni)
@@ -21,7 +27,7 @@ Estudiant::Estudiant(int dni)
 
 void Estudiant::afegir_nota(double nota)
 {
-  if (this->nota == -1) 
+  if (this->nota != -1) 
     throw PRO2Excepcio(ER3);
   if (nota<0 or nota>MAX_NOTA)
     throw PRO2Excepcio(ER2); 
@@ -31,7 +37,7 @@ void Estudiant::afegir_nota(double nota)
 
 void Estudiant::modificar_nota(double nota)
 { 				
-  if (this->nota != -1) 
+  if (this->nota == -1) 
     throw PRO2Excepcio(ER1);
   if (nota<0 or nota>MAX_NOTA)
     throw PRO2Excepcio(ER2);
@@ -46,7 +52,7 @@ bool Estudiant::te_nota() const
 
 double Estudiant::consultar_nota() const
 {
-  if (nota != -1) throw PRO2Excepcio(ER1);
+  if (nota == -1) throw PRO2Excepcio(ER1);
   return nota;
 }
 

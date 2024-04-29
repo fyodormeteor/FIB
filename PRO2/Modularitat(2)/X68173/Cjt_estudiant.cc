@@ -1,3 +1,6 @@
+// todo: fix xd
+
+
 #include "Cjt_estudiants.hh"
 #include <algorithm>
 
@@ -27,7 +30,7 @@ void Cjt_estudiants::afegir_estudiant(const Estudiant& est) {
   bool has_nota = est.te_nota();
   if (has_nota)
   {
-    if (imax = -1)                                                          imax = i+1;
+    if (imax == -1)                                                         imax = i+1;
     else if (est.consultar_nota() > estudiant_nota_max().consultar_nota())  imax = i+1;
   }
 }
