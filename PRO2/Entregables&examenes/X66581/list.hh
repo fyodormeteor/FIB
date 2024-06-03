@@ -231,7 +231,6 @@ public:
         if (!hooked)
         {
           pitem = pitem->next;
-          return *this;
         }
         else if (pitem->next != &(plist->itemsup))
         {
@@ -248,8 +247,6 @@ public:
           iafter_after->prev = pitem;
           pitem->prev = iafter;
           iafter->prev = ibefore;
-
-          return *this;
         }
       }
 
@@ -287,7 +284,6 @@ public:
         if (!hooked)
         {
           pitem = pitem->prev;
-          return *this;
         }
         else if (pitem->prev != &(plist->iteminf))
         {
@@ -304,8 +300,6 @@ public:
           iafter->prev = ibefore;
           ibefore->prev = pitem;
           pitem->prev = ibefore_before;
-
-          return *this;
         }
       }
       return *this;
