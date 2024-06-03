@@ -285,7 +285,7 @@ public:
         {
           pitem = pitem->prev;
         }
-        else if (pitem->prev != &(plist->iteminf))
+        else
         {
           Item* ibefore = pitem->prev;
           Item* iafter = pitem->next;
