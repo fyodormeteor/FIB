@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_SIZE 8
+
+int
+isNumber (char *str)
+{
+  if (strlen (str) > MAX_SIZE)
+    return 0;
+
+  int i = 0;
+  int is_n = 1;
+  char num = str[0];
+
+  while (i < MAX_SIZE && num != '\0' && is_n == 1)
+    {
+      if (i == 0)
+	{
+	  if (num < '0' && num != '-')
+	    is_n = 0;
+	  if (num > '9' && num != '-')
+	    is_n = 0;
+	}
+      else
+	{
+	  if (num < '0')
+	    is_n = 0;
+	  if (num > '9')
+	    is_n = 0;
+	}
+
+      i++;
+      num = str[i];
+    }
+
+  return is_n;
+}
+
+int
+main (int argc, char *argv[])
+{
+  for (int i = 1; i < argc; i++)
+    {
+      char buffer[128];
+
+      if (isNumber (argv[i]) == 1)
+	{
+	  sprintf (buffer, "%s is a number.\n", argv[i]);
+	}
+      else
+	{
+	  sprintf (buffer, "%s is not a number.\n", argv[i]);
+	}
+
+      write (1, buffer, strlen (buffer));
+    }
+
+  return 0;
+}
