@@ -1,0 +1,52 @@
+ejemplo_fork1:
+    "Soy el proceso 3084" Written by the parent process.
+    "Soy el proceso 3085" Written by the child process.
+    I know the bottom one is the child, because it's PID is greater.
+
+ejemplo_fork2:
+    "Antes del fork: Soy el proceso 4293"
+    "PADRE: Soy el proceso 4293"
+    "Los DOS: Soy el proceso 4293"  
+    "HIJO: Soy el proceso 4294"
+    "Los DOS: Soy el proceso 4294"
+    The switch statement distinguishes between the child and the parent using fork()'s return value.
+
+ejemplo_fork3:
+    "Antes del fork: Soy el proceso 5604"
+    "PADRE: Soy el proceso 5604"
+    "Solo lo ejecuta el padre: Soy el proceso 5604"
+    "HIJO: Soy el proceso 5605"
+    The child process now only writes one sentences and stops it's execution using exit().
+
+ejemplo_fork4:
+    "Antes del fork: Soy el proceso 8619"
+    "PADRE: Soy el proceso 8619"
+    "Solo lo ejecuta el padre: Soy el proceso 8619"
+    "HIJO: Soy el proceso 8620"
+    "HIJO acaba: Soy el proceso 8620"
+    The parent finishes the execution first because of the for-loop delay in the children's code
+
+ejemplo_fork5:
+    "Antes del fork: Soy el proceso 10759"
+    "PADRE: Soy el proceso 10759"
+    "HIJO: Soy el proceso 10760"
+    "HIJO:La variable_global vale A y la local a"
+    "PADRE:La variable_global vale A y la local a"
+    "Solo lo ejecuta el padre: Soy el proceso 10759"
+
+ejemplo_fork6:
+    The output file has 200_004 lines. Both the parent and the child write the same letter 10_000 times and then increase the char value.
+    We cannot ensure that the output will be the same everytime because process scheduling may vary
+
+ejemplo_fork7:
+    The program does not compile simply because the funcition Escribe_variables() does not have access to local variables from the main.
+    Nothing to do with creating processes. For the program to work an argument could be added to Escribe_variables()
+
+ejemplo_exec1:
+    The program writes it's PID and then switches it's code to the command "ls -l".
+    Although the original code is supposed to write the PID 2 times, it only does it once, because after the code is switched with execlp() everything below that is not executed.
+
+ejemplo_exec2:
+    The code writes the process' PID and then switches its executable to ejemplo_fork1, which in turn creates another process, writing both the PID of the original one and the PID of the child.
+    In total there are 2 processes, because execlp() does not create a process, it simply replaces the code executed.
+
