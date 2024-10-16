@@ -1,0 +1,91 @@
+Q19:
+    fork() returns the PID of the child process if ran from the parent.
+    getpid() can be used to consult the PID.
+
+Q20:
+    In case execlp() fails.
+
+Q21:
+    Directories:
+    arch_status, attr, auxv, cgroup, clear_refs, cmdline, comm, coredump_filter, cpu_resctrl_groups, cpuset, cwd, environ, exe, fail-nth, fd, fdinfo, gid_map, io, ksm_merging_pages,
+    ksm_stat, latency, limits, loginuid, make-it-fail, map_files, maps, mem, mountinfo, mounts, mountstats, net, ns, numa_maps, oom_adj, oom_score, oom_score_adj, pagemap, patch_state,
+    personality, projid_map, root, sched, schedstat, sessionid, setgroups, smaps, smaps_rollup, stack, stat, statm, status, syscall, task, timens_offsets, timers, timerslack_ns, uid_map,
+    wchan
+
+    #ls -la
+
+Q22:
+    Status file of parent:
+    Name:   myPS_v0
+    Umask:  0022
+    State:  R (running)
+    Tgid:   9235
+    Ngid:   0
+    Pid:    9235
+    PPid:   8510
+    TracerPid:      0
+    Uid:    37474   37474   37474   37474
+    Gid:    105     105     105     105
+
+    Cmdline file of parent:
+    ./myPS_v0^@root^@
+
+    environ is for the environment variable of the process and env is for the environment variables located at the directory of execution.
+
+    State: R(Running)
+
+    CPU time: 74994 clock ticks
+
+Q23:
+    Directory cwd points to the directory from which the process was started. CWD means current working directory.
+    File exe is a binary file and I assume it is the current executable ran by the process.
+
+Q24:
+    Status file of child:
+    Name:   myPS_v0
+    Umask:  0022
+    State:  R (running)
+    Tgid:   9236
+    Ngid:   0
+    Pid:    9236
+    PPid:   9235
+    TracerPid:      0
+    Uid:    37474   37474   37474   37474
+    Gid:    105     105     105     105
+    
+    Cmdline file of child:
+    ./myPS_v0^@root^@
+
+    Environ child:
+    KDE_FULL_SESSION=true^@LS_COLORS=no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=41;33;01:ex=00;32:*.cmd=00;32:*.exe=01;32:*.com=01;32:*.bat=01;32:*.btm=01;32:*.dll=01;32:*.tar=00;31:*.tbz=00;31:*.tgz=00;31:*.rpm=00;31:*.deb=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.lzma=00;31:*.zip=00;31:*.zoo=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.tb2=00;31:*.tz2=00;31:*.tbz2=00;31:*.xz=00;31:*.avi=01;35:*.bmp=01;35:*.dl=01;35:*.fli=01;35:*.gif=01;35:*.gl=01;35:*.jpg=01;35:*.jpeg=01;35:*.mkv=01;35:*.mng=01;35:*.mov=01;35:*.mp4=01;35:*.mpg=01;35:*.pcx=01;35:*.pbm=01;35:*.pgm=01;35:*.png=01;35:*.ppm=01;35:*.svg=01;35:*.tga=01;35:*.tif=01;35:*.webm=01;35:*.webp=01;35:*.wmv=01;35:*.xbm=01;35:*.xcf=01;35:*.xpm=01;35:*.aiff=00;32:*.ape=00;32:*.au=00;32:*.flac=00;32:*.m4a=00;32:*.mid=00;32:*.mp3=00;32:*.mpc=00;32:*.ogg=00;32:*.voc=00;32:*.wav=00;32:*.wma=00;32:*.wv=00;32:^@CSHRCREAD=true^@HOSTTYPE=x86_64-linux^@XAUTHLOCALHOSTNAME=a5s102pc33^@LESSCLOSE=lessclose.sh %s %s^@XKEYSYMDB=/usr/X11R6/lib/X11/XKeysymDB^@LANG=ca_ES.UTF-8^@WINDOWMANAGER=/usr/bin/startplasma-x11^@LESS=-M -I -R^@MANAGERPID=3894^@SYSTEMD_EXEC_PID=4765^@DISPLAY=:0^@HOSTNAME=a5s102pc33^@ORIGINAL_XDG_CURRENT_DESKTOP=KDE^@QTDIR=/usr/lib/qt3^@INVOCATION_ID=b9e0368dca854c51ba04f077f555faa5^@CONFIG_SITE=/usr/share/site/x86_64-unknown-linux-gnu^@CSHEDIT=emacs^@GPG_TTY=/dev/pts/1^@AUDIODRIVER=pulseaudio^@LESS_ADVANCED_PREPROCESSOR=no^@KDE_APPLICATIONS_AS_SCOPE=1^@COLORTERM=truecolor^@JAVA_HOME=/usr/lib64/jvm/java-11-openjdk-11^@VSCODE_GIT_ASKPASS_EXTRA_ARGS=^@CHROME_DESKTOP=code-url-handler.desktop^@VENDOR=unknown^@MACHTYPE=x86_64^@NO_AT_BRIDGE=1^@XDG_VTNR=2^@SSH_AUTH_SOCK=/tmp/ssh-XXXXXXMKKZaW/agent.3978^@QEMU_AUDIO_DRV=pa^@MINICOM=-c on^@OSTYPE=linux^@XDG_SESSION_ID=5^@USER=fedor.trofimov^@PAGER=less^@DESKTOP_SESSION=plasma5^@__LMOD_REF_COUNT_MODULEPATH=/usr/share/lmod/modulefiles:1^@GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home2/users/alumnes/1310107/.gtkrc-2.0:/home2/users/alumnes/1310107/.config/gtkrc-2.0^@MORE=-sl^@GROUP=alumnes^@PWD=/home2/users/alumnes/1310107/dades/Documents/S3^@SSH_ASKPASS=/usr/lib/ssh/ssh-askpass^@HOME=/home2/users/alumnes/1310107^@JOURNAL_STREAM=8:35511^@VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code^@LMOD_COLORIZE=no^@SSH_AGENT_PID=4109^@TERM_PROGRAM=vscode^@HOST=a5s102pc33^@TERM_PROGRAM_VERSION=1.89.1^@LMOD_VERSION=8.7.34^@TARG_TITLE_BAR_PAREN=^@XCURSOR_SIZE=24^@XNLSPATH=/usr/share/X11/nls^@LMOD_SETTARG_CMD=:^@XDG_SESSION_TYPE=x11^@SDK_HOME=/usr/lib64/jvm/java-11-openjdk-11^@XDG_DATA_DIRS=/usr/local/share:/usr/share:/opt/kde3/share:/usr/share/gnome^@JDK_HOME=/usr/lib64/jvm/java-11-openjdk-11^@XDG_SESSION_DESKTOP=KDE^@NNTPSERVER=news^@_ModuleTable001_=X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IGZhbHNlLApjX3Nob3J0VGltZSA9IGZhbHNlLApkZXB0aFQgPSB7fSwKZmFtaWx5ID0ge30sCm1UID0ge30sCm1wYXRoQSA9IHsKIi91c3Ivc2hhcmUvbG1vZC9tb2R1bGVmaWxlcyIsCn0sCnN5c3RlbUJhc2VNUEFUSCA9ICIvdXNyL3NoYXJlL2xtb2QvbW9kdWxlZmlsZXMiLAp9Cg==^@GRAPHDIR=/home/soft/graphviz^@LMOD_ROOT=/usr/share/lmod^@GTK_MODULES=canberra-gtk-module^@FROM_HEADER=^@MAIL=/var/spool/mail/fedor.trofimov^@VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js^@LESSKEY=/etc/lesskey.bin^@TERM=xterm-256color^@SHELL=/usr/bin/tcsh^@XDG_SESSION_CLASS=user^@XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0^@QT_IM_MODULE=xim^@XMODIFIERS=@im=local^@_ModuleTable_Sz_=1^@LS_OPTIONS=-N --color=tty -T 0
+    ^@XCURSOR_THEME=breeze_cursors^@XDG_CURRENT_DESKTOP=KDE^@PYTHONSTARTUP=/etc/pythonstart^@SHLVL=4^@XDG_SEAT=seat0^@LANGUAGE=^@G_FILENAME_ENCODING=@locale,UTF-8,ISO-8859-15,CP1252^@VSCODE_GIT_IPC_HANDLE=/run/user/37474/vscode-git-7bf6f95b0d.sock^@TEXDIR=/home/soft/texlive/2013/bin/i386-linux^@MANPATH=/usr/local/man:/usr/local/share/man:/usr/share/man^@GTK_RC_FILES=/etc/gtk/gtkrc:/home2/users/alumnes/1310107/.gtkrc:/home2/users/alumnes/1310107/.config/gtkrc^@XSESSION_IS_UP=yes^@LMOD_PREPEND_BLOCK=normal^@GDK_BACKEND=x11^@MODULEPATH=/usr/share/lmod/modulefiles^@LOGNAME=fedor.trofimov^@DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/37474/bus^@GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh^@XDG_RUNTIME_DIR=/run/user/37474^@XAUTHORITY=/tmp/xauth_nwNGBW^@JRE_HOME=/usr/lib64/jvm/java-11-openjdk-11^@XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session1^@QT_AUTO_SCREEN_SCALE_FACTOR=0^@XDG_CONFIG_DIRS=/home2/users/alumnes/1310107/.config/kdedefaults:/etc/xdg^@PATH=/home/soft/graphviz/bin:/home/soft/texlive/2013/bin/i386-linux:/opt/super/bin:/home/soft/graphviz/bin:/home/soft/texlive/2013/bin/i386-linux:/opt/super/bin:/home2/users/alumnes/1310107/bin:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin:/usr/lib/qt3/bin:.^@JAVA_BINDIR=/usr/lib64/jvm/java-11-openjdk-11/bin^@KDE_SESSION_UID=37474^@ICEAUTHORITY=/run/user/37474/iceauth_ZoIQoP^@KDE_SESSION_VERSION=5^@MODULESHOME=/usr/share/lmod/lmod^@LMOD_SETTARG_FULL_SUPPORT=no^@QT_IM_SWITCHER=imsw-multi^@G_BROKEN_FILENAMES=1^@LMOD_PKG=/usr/share/lmod/lmod^@SESSION_MANAGER=local/a5s102pc33:@/tmp/.ICE-unix/4173,unix/a5s102pc33:/tmp/.ICE-unix/4173^@CPU=x86_64^@LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod^@CVS_RSH=ssh^@LESSOPEN=lessopen.sh %s^@LMOD_FULL_SETTARG_SUPPORT=no^@LMOD_DIR=/usr/share/lmod/lmod/libexec^@GTK_IM_MODULE=cedilla^@_=./myPS_v0^@
+
+Q25:
+    cwd does not exist for the child because the child has finished it's execution and is now in zombie state. Same for the exe file.
+
+Q26:
+    Status child:
+    Name:   ps
+    State:  Z (zombie)
+    Tgid:   12286
+    Ngid:   0
+    Pid:    12286
+    PPid:   12285
+    TracerPid:      0
+    Uid:    37474   37474   37474   37474
+    Gid:    105     105     105     105
+    FDSize: 0
+    Groups: 105
+
+    The status of the child is zombie.
+    Cmdline of child has no contents.
+    Environ no permission to access.
+
+    The differences are for example, the name (now ps, before myPS_v0) and the state (now zombie, before running).
+
+Q27:
+    The parent process is sleeping
+
+Q28:
+    #./myPS3 > outN.txt
+
