@@ -1,0 +1,20 @@
+alarm1:
+1. Nothing. The alarm takes 10 seconds. After 10 seconds the process writes a message and exits.
+2. The behaviour is different. Once kill command is sent, the process exits immediately with a different message: "Killed"
+3. The shell. With waitpid, you pass a pointer as a second argument to save status
+4. It is not necessary. The default treatment for SIGALRM is to end the process.
+
+alarm2:
+1. No because a different terminal was used to send the alarm signal artificially.
+2. No. You cannot modify the treatment of SIGKILL and SIGSTOP.
+3. Line 21: segundos = segundos + 10 - alarm(0);
+By subtracting alarm(0) we are making sure that we have in account the remaining time until the alarm would have arrived naturally.
+
+alarm3:
+1. Both processes receive the alarm. I checked it by running the program which already prints the PID.
+
+alarm4:
+1. Only the child receives the alarm, while the parent is kept in sleeping state. (Checked using #cd /proc/parentpid #cat status)
+That is because after the fork only the child sets an alarm. Therefore the child receives the alarm while the parent is kept suspended.
+
+waitpid1:
