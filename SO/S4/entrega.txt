@@ -1,20 +1,18 @@
-alarm1:
-1. Nothing. The alarm takes 10 seconds. After 10 seconds the process writes a message and exits.
-2. The behaviour is different. Once kill command is sent, the process exits immediately with a different message: "Killed"
-3. The shell. With waitpid, you pass a pointer as a second argument to save status
-4. It is not necessary. The default treatment for SIGALRM is to end the process.
+Q29.
+When the parent receives a SIGALARM it will terminate the process as that is the default behaviour for that signal.
 
-alarm2:
-1. No because a different terminal was used to send the alarm signal artificially.
-2. No. You cannot modify the treatment of SIGKILL and SIGSTOP.
-3. Line 21: segundos = segundos + 10 - alarm(0);
-By subtracting alarm(0) we are making sure that we have in account the remaining time until the alarm would have arrived naturally.
+Q30.
+After execlp, the signal table is reset, therefore in the mutated process the reprogrammed signals go back their default treatments
 
-alarm3:
-1. Both processes receive the alarm. I checked it by running the program which already prints the PID.
+Q31.
+Concurrent
 
-alarm4:
-1. Only the child receives the alarm, while the parent is kept in sleeping state. (Checked using #cd /proc/parentpid #cat status)
-That is because after the fork only the child sets an alarm. Therefore the child receives the alarm while the parent is kept suspended.
+Q32.
+Other user cannot send signal to the process. The error is operating denied.
 
-waitpid1:
+Q33.
+For the alarm signal it shows: Temporitzador. It happens after 2 seconds.
+
+Q34.
+With parameter 1, the child receives the signal after it is in the sigsuspend call. Therefore it is unblocked and finishes normally.
+With parameter 0, the child receives the signal before the sigsuspend call. Therefore it is blocked forever and doesnt finish normally. 

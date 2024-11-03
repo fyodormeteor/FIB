@@ -37,11 +37,17 @@ main (int argc, char *argv[])
   sa.sa_flags = SA_RESTART;
   sigfillset (&sa.sa_mask);
 
-  if (sigaction (SIGALRM, &sa, NULL) < 0)
-    error_y_exit ("sigaction", 1);
+  int r = fork();
 
-  if (fork () < 0)
+  if (r < 0)
     error_y_exit ("fork", 1);
+
+  if (r == 0)
+  {
+      if (sigaction (SIGALRM, &sa, NULL) < 0)
+        error_y_exit ("sigaction", 1);
+  }
+  
   while (segundos < 100)
     {
       alarm (10);

@@ -17,10 +17,19 @@ int segundos = 0;
 void
 funcion_alarma (int s)
 {
-  char buff[256];
-  segundos = segundos + 10 - alarm(0);
-  sprintf (buff, "ALARMA pid=%d: %d segundos\n", getpid (), segundos);
-  write (1, buff, strlen (buff));
+  if (s == SIGALRM)
+  {
+    char buff[256];
+    segundos = segundos + 10 - alarm(0);
+    sprintf (buff, "ALARMA pid=%d: %d segundos\n", getpid (), segundos);
+    write (1, buff, strlen (buff));
+  }
+  else if (s == SIGUSR1)
+  {
+    char buff[256];
+    sprintf (buff, "Signal SIGUSR1 received by %d\n", getpid ());
+    write (1, buff, strlen (buff));
+  }
 }
 
 int
@@ -31,6 +40,7 @@ main (int argc, char *argv[])
 
   sigemptyset (&mask);
   sigaddset (&mask, SIGALRM);
+  sigaddset (&mask, SIGUSR1);
   sigprocmask (SIG_BLOCK, &mask, NULL);
 
   /* REPROGRAMAMOS EL SIGNAL SIGALRM */
@@ -41,6 +51,9 @@ main (int argc, char *argv[])
   if (sigaction (SIGALRM, &sa, NULL) < 0)
     error_y_exit ("sigaction", 1);
 
+  if (sigaction (SIGUSR1, &sa, NULL) < 0)
+    error_y_exit ("siguser1", 1);
+
   while (segundos < 100)
     {
       alarm (10);               /* Programamos la alarma para dentro de 10 segundos */
@@ -48,6 +61,7 @@ main (int argc, char *argv[])
       sigfillset (&mask);
       sigdelset (&mask, SIGALRM);
       sigdelset (&mask, SIGINT);
+      sigdelset (&mask, SIGUSR1);
       sigsuspend (&mask);
     }
   exit (1);
