@@ -1,0 +1,28 @@
+#nm mem1_previo
+=>
+0000000000004014 B j
+00000000000011ec T main
+00000000000011c9 T suma
+
+B: The symbol is in the BSS data section.  This section typically contains zero-initialized or uninitialized data, although the exact behavior is system dependent.
+T: The symbol is in the text (code) section.
+
+#gcc -static mem1_previo.c -o x
+
+mem2_previo.c:
+    vector size 10:
+        size of heap = 0x0194a000 - 0x01928000 = 0x22000
+        size of data = 0x004c9000 - 0x004c6000 = 0x3000
+    vector size 40000:
+        size of heap = 0x28bf4000 - 0x28bd2000 = 0x22000
+        size of data = 0x004c9000 - 0x004c6000 = 0x3000
+
+mem2_previo_v2.c:
+    vector size 10:
+        size of heap = 0x2d814000 - 0x2d7f1000 = 0x23000
+        size of data = 0x004c9000 - 0x004c6000 = 0x3000
+    vector size 40000:
+        size of heap = 0x33d2b000 - 0x33d75000 = 0x4A000
+        size of data = 0x004c9000 - 0x004c6000 = 0x3000
+
+
