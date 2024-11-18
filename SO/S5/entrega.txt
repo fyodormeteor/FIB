@@ -1,0 +1,63 @@
+Q35.
+    0000000000402080 B globalArray
+    Found in data section
+    Global variable
+
+Q36.
+    For the statically compiled program, #nm has a larger output, with way more symbols.
+    The statically compiled program also has a way larger #objdump -d output.
+    It also occupies more space on disk
+
+Q37.
+For mem1_dynamic:
+    [data]  00402000 - 00404000
+    [heap]  01d8a000 - 01dab000
+    [stack] 7ffcf40af000 - 7ffcf40d1000
+For mem1_static:
+    [data]  004a0000 - 004aa000
+    [heap]  0161a000 - 0163c000
+    [stack] 7ffd67b24000 - 7ffd67b46000
+
+    The static executable has more space for data, possibly since the libraries that are included use that section.
+
+Q38.
+    Belongs to the heap region.
+
+Q39.
+    #./mem1 3
+    Mallocs done: 3
+    [heap] 008c5000 - 008e6000 = 0x21000
+
+    #./mem1 5
+    Mallocs done: 5
+    [heap] 01686000 - 016a7000 = 0x21000
+
+    #./mem1 100
+    Mallocs done: 100
+    [heap] = 01c4e000 - 01cd2000 = 0x84000
+
+    The size changes when we jump from 5 to 100 iterations.
+    We don't get more heap memory when we change from 3 to 5 because malloc() allocates a bigger heap zone at once, in which we are able to store more data than requested.
+
+Q40.
+    [heap] 00aae000 - 00acf000 = 0x21000
+    Since we deallocate memory, we only get the heap size needed for 1 element.
+
+Q41.
+    #./mem1_v3 3
+    [heap] 00c4f000 - 00c52000 = 0x3000
+
+    #./mem1_v3 5
+    [heap] 01795000 - 0179a000 = 0x5000
+
+    #./mem1_v3 100
+    [heap] 01043000 - 010a7000 = 0x64000
+
+    Since we are now using sbrk(), we allocate the exact needed number of pages.
+
+Q42.
+    We only allocate 4 bytes to pointer p. We should allocate more memory each loop iteration.
+    The program doesn't fail in the first iterations because malloc() allocates more than 4 bytes,
+    so it takes more iterations for the loop to reach invalid memory.
+
+
