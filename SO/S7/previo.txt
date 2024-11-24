@@ -1,0 +1,30 @@
+After pressing Ctrl+D, read syscall will return 0, meaning EOF was reached.
+
+# ./es1 < test.txt
+
+# ls -l | grep es returns all the files from the CWD that contain 'es' in their name.
+This is done by redirecting the output of ls -l (all the files in the CWD) to grep es, which filters.
+
+# ps -fe | grep bash
+
+In the first case, 4 bytes are written. (size of an int)
+In the second case, 5 bytes are written. (size of the string that holds the number)
+
+In myDriver1.c:
+struct file_operations fops_driver_1 = {
+owner:THIS_MODULE,
+read:read_driver_1,
+};
+
+In myDriver2.c
+    struct file_operations fops_driver_2 = {
+    owner:THIS_MODULE,
+    read:read_driver_2,
+    };
+
+From the source code we see that the function assigned to read is 'read_driver_1' and 'read_driver_2' respectively.
+
+Major and minors are the device driver identifiers. They are used to associate a logical device with its specific access code
+
+myDriver1.c 249:0
+myDriver2.c 250:0
