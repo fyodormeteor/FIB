@@ -1,0 +1,45 @@
+Q55.
+
+# ./es1 > /dev/pts/0
+# ./es1 | ./es1
+
+The strace of v1 has a lot more entires, since we are reading byte by byte
+v2 on the other hand has a lot less because we read in chunks of 256 bytes
+
+v1: 1702 reads
+v2: 9 reads
+
+v2 is way more optimized because syscalls are costly operations
+
+Q56.
+
+With parameter 0, es2 converts integers from input to ASCII
+With parameter 1, es2 converts integers from input to their internal representation
+
+Q57.
+
+es3 assumes that the input is an internal representation of an int.
+Therefore, it works well with the file associated with #./es2 1, but prints garbage for #./es2 0
+
+Q58.
+
+es4 assumes that the input is an integer in ASCII format
+Therefore, it works well with the file associated with #./es2 0, but prints garbage for #./es2 1
+
+Q59.
+
+./es6 shows 0.0% CPU Usage
+./es5 shows 100% CPU Usage
+
+This is because es6 waits for an input (read syscall) and thus is in BLOCKED state (no CPU usage)
+es5 has 100% CPU usage because it is actively waiting (using a while(1)) loop.
+
+Q60.
+
+The program es6_v2 functions as expected
+
+Q61.
+
+With the flag SA_RESTART, no error happens after the signal.
+
+
