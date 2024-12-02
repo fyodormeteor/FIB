@@ -1,0 +1,16 @@
+Q67.
+
+Inicio
+Fin
+
+The parent writes "Inicio" to the pipe, child (cat) reads it and prints it onto the screen.
+
+Q68.
+
+The programs dont finish. Child is in a blocking read() call, and the parent is in a blocking waitpid() call.
+
+Q69.
+
+We should use a different pipe, because a pipe is not full duplex. This means that if the escritor wanted to read, it could end up reading what it itself wrote before.
+
+If we use the same pipe, we have to have proper sync between the programs.
