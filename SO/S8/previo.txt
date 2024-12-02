@@ -1,0 +1,16 @@
+# mkfifo NAMEDPIPE
+First shell:  # cat > NAMEDPIPE
+Second shell: # cat < NAMEDPIPE
+
+It is not possible because anonymous pipes are strictly local to a process and its child processes.
+Its only possible with one terminal.
+
+r = fork();
+if (r==0) {
+    close(1);  
+    dup(4);
+    close(4);
+}
+
+A socket is similar to a pipe, but allows full-duplex communication and also allows communication through the network
+
