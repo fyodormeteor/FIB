@@ -1,0 +1,55 @@
+#df -T
+
+Filesystem     Type           1K-blocks      Used Available Use% Mounted on
+none           overlay          4001368         0   4001368   0% /usr/lib/modules/5.15.167.4-microsoft-standard-WSL2
+none           tmpfs            4001368         4   4001364   1% /mnt/wsl
+drivers        9p             498852848 401740676  97112172  81% /usr/lib/wsl/drivers
+/dev/sdc       ext4          1055762868  12976924 989082472   2% /
+none           tmpfs            4001368        84   4001284   1% /mnt/wslg
+none           overlay          4001368         0   4001368   0% /usr/lib/wsl/lib
+rootfs         rootfs           3997956      2208   3995748   1% /init
+none           tmpfs            4001368       804   4000564   1% /run
+none           tmpfs            4001368         0   4001368   0% /run/lock
+none           tmpfs            4001368         0   4001368   0% /run/shm
+tmpfs          tmpfs               4096         0      4096   0% /sys/fs/cgroup
+none           overlay          4001368        76   4001292   1% /mnt/wslg/versions.txt
+none           overlay          4001368        76   4001292   1% /mnt/wslg/doc
+C:\            9p             498852848 401740676  97112172  81% /mnt/c
+snapfuse       fuse.snapfuse        128       128         0 100% /snap/bare/5
+snapfuse       fuse.snapfuse      75648     75648         0 100% /snap/core22/1722
+snapfuse       fuse.snapfuse      93952     93952         0 100% /snap/gtk-common-themes/1535
+snapfuse       fuse.snapfuse      75648     75648         0 100% /snap/core22/1663
+snapfuse       fuse.snapfuse      39808     39808         0 100% /snap/snapd/21759
+snapfuse       fuse.snapfuse      45440     45440         0 100% /snap/snapd/23258
+snapfuse       fuse.snapfuse     134144    134144         0 100% /snap/ubuntu-desktop-installer/1284
+snapfuse       fuse.snapfuse     134912    134912         0 100% /snap/ubuntu-desktop-installer/1286
+
+#df -i
+
+The column IFree indicates how many free inodes are in the filesystem.
+
+#df -h
+
+The column Avail indicates the free space in the filesystem.
+
+sl_pr is a soft link, hl_pr is a hard link.
+
+pr.txt: Inode = 21378, Links = 2
+hl_pr: Inode = 21378, Links = 2
+sl_pr: Inode = 21381, Links = 1
+
+"Links" refeers to how many filenames link to the inode.
+hl_pr links to the same inode as pr.txt, therefore both #stat executions show 2 links.
+
+#namei sl_pr != #namei hl_pr
+namei follows the pathname until the file is found. For sl_pr, it goes through it, sees that it is a link to another inode and
+finally accesses that inode.
+On the other hand, for hl_pr, it does not need this additional step because hl_pr already points to the destination inode.
+
+#readlink
+The command does not work for hl_pr, and for sl_pr it print the name of the file that it links ("pr.txt")
+
+After deleting "pr.txt", the inode that it pointed to is not deleted, because hl_pr still points to it.
+But, since the filename "pr.txt" is no longer in the directory, we are not able to access the inode of hl_pr through sl_pr.
+Therefore, #cat hl_pr = "This is a test" and #cat sl_pr = No such file or directory.
+
