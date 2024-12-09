@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "stdlib.h": "c",
+        "fcntl.h": "c",
+        "stat.h": "c"
     }
 }

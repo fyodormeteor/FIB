@@ -1,0 +1,88 @@
+
+FEDOR TROFIMOV
+ANGEL ANDRÉS QUIÑONES RUSANOV
+
+
+#ln $HOME/A $HOME/A/H
+We cannot make hard links to directories in order to avoid cycles in the file system graph.
+
+fedor.trofimov@a5s102pc33:~/A> stat D
+     Fitxer: D
+       Mida: 19         Blocs: 8          Bloc d’E/S: 4096   fitxer ordinari
+ Dispositiu: 10307h/66311d      Node‐i: 6587932     Enllaços: 2
+      Accés: (0644/-rw-r--r--)  UID: (37474/fedor.trofimov)   GID: (  105/ alumnes)
+      Accés: 2024-12-09 10:22:43.127106358 +0100
+Modificació: 2024-12-09 10:17:42.622909961 +0100
+      Canvi: 2024-12-09 10:26:04.184204613 +0100
+  Naixement: 2024-12-09 10:17:42.618909855 +0100
+
+fedor.trofimov@a5s102pc33:~/A> stat E
+     Fitxer: E -> /home2/users/alumnes/1310107/A
+       Mida: 30         Blocs: 0          Bloc d’E/S: 4096   enllaç simbòlic
+ Dispositiu: 10307h/66311d      Node‐i: 6587810     Enllaços: 1
+      Accés: (0777/lrwxrwxrwx)  UID: (37474/fedor.trofimov)   GID: (  105/ alumnes)
+      Accés: 2024-12-09 10:24:53.510449099 +0100
+Modificació: 2024-12-09 10:24:53.510449099 +0100
+      Canvi: 2024-12-09 10:24:53.510449099 +0100
+  Naixement: 2024-12-09 10:24:53.510449099 +0100
+
+fedor.trofimov@a5s102pc33:~/A> stat F
+     Fitxer: F -> D
+       Mida: 1          Blocs: 0          Bloc d’E/S: 4096   enllaç simbòlic
+ Dispositiu: 10307h/66311d      Node‐i: 6589684     Enllaços: 1
+      Accés: (0777/lrwxrwxrwx)  UID: (37474/fedor.trofimov)   GID: (  105/ alumnes)
+      Accés: 2024-12-09 10:24:11.937400066 +0100
+Modificació: 2024-12-09 10:24:11.937400066 +0100
+      Canvi: 2024-12-09 10:24:11.937400066 +0100
+  Naixement: 2024-12-09 10:24:11.937400066 +0100
+
+fedor.trofimov@a5s102pc33:~/A> stat G
+     Fitxer: G
+       Mida: 19         Blocs: 8          Bloc d’E/S: 4096   fitxer ordinari
+ Dispositiu: 10307h/66311d      Node‐i: 6587932     Enllaços: 2
+      Accés: (0644/-rw-r--r--)  UID: (37474/fedor.trofimov)   GID: (  105/ alumnes)
+      Accés: 2024-12-09 10:22:43.127106358 +0100
+Modificació: 2024-12-09 10:17:42.622909961 +0100
+      Canvi: 2024-12-09 10:26:04.184204613 +0100
+  Naixement: 2024-12-09 10:17:42.618909855 +0100
+
+#cat D = I'm in directory A
+    The inode is accessed directly
+
+#cat E = Es un directori
+    The inode of E is accessed and then the directory referenced by the soft link is accessed
+
+#cat F = I'm in directory A
+    The inode of F is accessed and then the inode of D is accessed
+
+#cat G = I'm in directory A
+    The inode is accessed directly
+
+#ln -l M M
+    By creating a soft link to itself on a file that does not exist,  executions such as #cat M produce the following output:
+    cat: M: Hi ha massa nivells d’enllaços simbòlics
+
+fedor.trofimov@a5s102pc33:~/A> namei M
+f: M
+ l M -> M
+   l M -> M
+     l M -> M
+       l M -> M
+         l M -> M
+           l M -> M
+             l M -> M
+               l M -> M
+                 l M -> M
+                   l M -> M
+                     l M -> M
+                       l M -> M
+                         l M -> M
+                           l M -> M
+                             l M -> M
+                               l M -> M
+                                 l M -> M
+                                   l M -> M
+                                     l M -> M
+                                       l M -> M
+                                         l M -> M
+namei: M: exceeded limit of symlinks

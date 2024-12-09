@@ -9,7 +9,7 @@
 int main() {
 	char buf[256];
     // 000 110 000 000
-	int f = creat("salida.txt",O_CREAT|O_TRUNC|0600);
+	int f = creat("salida.txt",0600);
 	sprintf(buf,"ABCD");
 	write(f,buf,strlen(buf));
 }
