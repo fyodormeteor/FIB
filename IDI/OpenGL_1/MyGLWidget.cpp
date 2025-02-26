@@ -29,9 +29,21 @@ void MyGLWidget::paintGL ()
 {
 // En cas de voler canviar els paràmetres del viewport, descomenteu la crida següent i
 // useu els paràmetres que considereu (els que hi ha són els de per defecte)
-// glViewport (0, 0, ample, alt);
+  glViewport (0, 0, ample, alt);
   
   glClear (GL_COLOR_BUFFER_BIT);  // Esborrem el frame-buffer
+
+  // Bottom left
+  glViewport (0, 0, 0.5*ample, 0.5*alt);
+
+  // Activem l'Array a pintar 
+  glBindVertexArray(VAO1);
+ 
+  // Pintem l'escena
+  glDrawArrays(GL_TRIANGLES, 0, 12);
+  
+  // Top right
+  glViewport (0.5*ample, 0.5*alt, 0.5*ample, 0.5*alt);
 
   // Activem l'Array a pintar 
   glBindVertexArray(VAO1);
@@ -40,10 +52,6 @@ void MyGLWidget::paintGL ()
   glDrawArrays(GL_TRIANGLES, 0, 12);
   
   // Desactivem el VAO
-  glBindVertexArray(0);
-
-  glBindVertexArray(VAO2);
-  glDrawArrays(GL_TRIANGLES, 0, 12);
   glBindVertexArray(0);
 } 
 
@@ -63,45 +71,25 @@ void MyGLWidget::resizeGL (int w, int h)
 
 void MyGLWidget::creaBuffers ()
 {
-  glm::vec3 vert1[12];  // Tres vèrtexs amb X, Y i Z
-  glm::vec3 vert2[12];  // Tres vèrtexs amb X, Y i Z
+  glm::vec3 vert[12];
 
   int i = 0;
-  vert1[i] = glm::vec3(-1.0,-1.0, 0.0); i++;
-  vert1[i] = glm::vec3(-0.5,-1.0, 0.0); i++;
-  vert1[i] = glm::vec3(-0.5,-0.5, 0.0); i++;
+  vert[i] = glm::vec3(0.0, 0.0, 0.0); i++;
+  vert[i] = glm::vec3(0.0, -1.0, 0.0); i++;
+  vert[i] = glm::vec3(-1.0, -1.0, 0.0); i++;
 
-  vert1[i] = glm::vec3(-1.0,-1.0, 0.0); i++;
-  vert1[i] = glm::vec3(-1.0,-0.5, 0.0); i++;
-  vert1[i] = glm::vec3(-0.5,-0.5, 0.0); i++;
+  vert[i] = glm::vec3(0.0, 0.0, 0.0); i++;
+  vert[i] = glm::vec3(-1.0, 0.0, 0.0); i++;
+  vert[i] = glm::vec3(-1.0, -1.0, 0.0); i++;
 
-  vert1[i] = glm::vec3(-1.0,-0.5, 0.0); i++;
-  vert1[i] = glm::vec3(-0.5,-0.5, 0.0); i++;
-  vert1[i] = glm::vec3(-0.75,0.0, 0.0); i++;
+  vert[i] = glm::vec3(-1.0, 0.0, 0.0); i++;
+  vert[i] = glm::vec3(0.0, 0.0, 0.0); i++;
+  vert[i] = glm::vec3(-0.5, 1.0, 0.0); i++;
 
-  vert1[i] = glm::vec3(-0.5,-0.5, 0.0); i++;
-  vert1[i] = glm::vec3(0.0,-0.5, 0.0); i++;
-  vert1[i] = glm::vec3(-0.25,0.0, 0.0); i++;
+  vert[i] = glm::vec3(0.0, 0.0, 0.0); i++;
+  vert[i] = glm::vec3(1.0, 0.0, 0.0); i++;
+  vert[i] = glm::vec3(0.5, 1.0, 0.0); i++;
 
-  i = 0;
-  vert2[i] = glm::vec3(0.0,0.0, 0.0); i++;
-  vert2[i] = glm::vec3(0.5,0.0, 0.0); i++;
-  vert2[i] = glm::vec3(0.5,0.5, 0.0); i++;
-
-  vert2[i] = glm::vec3(0.0,0.0, 0.0); i++;
-  vert2[i] = glm::vec3(0.0,0.5, 0.0); i++;
-  vert2[i] = glm::vec3(0.5,0.5, 0.0); i++;
-
-  vert2[i] = glm::vec3(0.0,0.5, 0.0); i++;
-  vert2[i] = glm::vec3(0.5,0.5, 0.0); i++;
-  vert2[i] = glm::vec3(0.25,1.0, 0.0); i++;
-
-  vert2[i] = glm::vec3(0.5,0.5, 0.0); i++;
-  vert2[i] = glm::vec3(1.0,0.5, 0.0); i++;
-  vert2[i] = glm::vec3(0.75,1.0, 0.0); i++;
-
-
-  
   // Creació del Vertex Array Object (VAO) que usarem per pintar
   glGenVertexArrays(1, &VAO1);
   glBindVertexArray(VAO1);
@@ -110,24 +98,7 @@ void MyGLWidget::creaBuffers ()
   GLuint VBO1;
   glGenBuffers(1, &VBO1);
   glBindBuffer(GL_ARRAY_BUFFER, VBO1);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vert1), vert1, GL_STATIC_DRAW);
-
-  // Activem l'atribut que farem servir per vèrtex (només el 0 en aquest cas)	
-  glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
-  glEnableVertexAttribArray(vertexLoc);
-
-  // Desactivem el VAO
-  glBindVertexArray(0);
-
-  // Creació del Vertex Array Object (VAO) que usarem per pintar
-  glGenVertexArrays(1, &VAO2);
-  glBindVertexArray(VAO2);
-
-  // Creació del buffer amb les dades dels vèrtexs
-  GLuint VBO2;
-  glGenBuffers(1, &VBO2);
-  glBindBuffer(GL_ARRAY_BUFFER, VBO2);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vert2), vert2, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
 
   // Activem l'atribut que farem servir per vèrtex (només el 0 en aquest cas)	
   glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
