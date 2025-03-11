@@ -7,6 +7,11 @@
         "stat.h": "c",
         "errno.h": "c",
         "types.h": "c",
-        "wait.h": "c"
+        "wait.h": "c",
+        "*.tcc": "cpp",
+        "__bit_reference": "cpp",
+        "future": "cpp",
+        "ios": "cpp",
+        "numbers": "cpp"
     }
 }
