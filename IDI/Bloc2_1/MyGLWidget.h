@@ -14,6 +14,8 @@ class MyGLWidget : public BL2GLWidget {
     void paintGL();
     void creaBuffers();
     void carregaShaders();
+    void modelTransform();
+    void keyPressEvent (QKeyEvent *event);
     GLuint projLoc;
     GLuint viewLoc;
 
@@ -27,5 +29,6 @@ class MyGLWidget : public BL2GLWidget {
 
     void creaBuffersHomer();
     Model homer;
+    float rotacion;
     
 };

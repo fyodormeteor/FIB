@@ -109,6 +109,34 @@ void MyGLWidget::carregaShaders() {
     viewLoc = glGetUniformLocation(program->programId(), "view");
 }
 
+void MyGLWidget::modelTransform () 
+{
+    glm::mat4 TG(1.0f);
+    TG = glm::rotate(TG, glm::radians(rotacion), glm::vec3(0.0f, 1.0f, 0.0f));
+    TG = glm::scale(TG, glm::vec3(escala));
+    glUniformMatrix4fv(transLoc, 1, GL_FALSE, &TG[0][0]);
+}
+
+void MyGLWidget::keyPressEvent(QKeyEvent *event) {
+    makeCurrent();
+    switch (event->key()) {
+        case Qt::Key_S: { // escalar a més gran
+            escala += 0.05;
+            break;
+        }
+        case Qt::Key_D: { // escalar a més petit
+            escala -= 0.05;
+            break;
+        }
+        case Qt::Key_R: {
+            rotacion += 45;
+            break;
+        }
+        default: event->ignore(); break;
+    }
+    update();
+}
+
 void MyGLWidget::projectTransform() {
     // glm::perspective (FOV en radians, ra window, znear, zfar)
     glm::mat4 Proj = glm::perspective(float(M_PI)/2.0f, 1.0f, 0.4f, 3.0f);
