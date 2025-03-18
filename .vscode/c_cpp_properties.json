@@ -6,7 +6,10 @@
                 "${workspaceFolder}/**",
                 "/usr/include/qt/QtGui",
                 "/usr/include/qt",
-                "/usr/include/qt/QtWidgets"
+                "/usr/include/qt/QtWidgets",
+                "/usr/include/qt5/QtGui",
+                "/usr/include/qt5",
+                "/usr/include/qt5/QtWidgets"
             ],
             "defines": [],
             "cStandard": "c17",
