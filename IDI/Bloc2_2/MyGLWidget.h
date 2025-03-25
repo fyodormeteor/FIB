@@ -14,21 +14,37 @@ class MyGLWidget : public BL2GLWidget {
     void paintGL();
     void creaBuffers();
     void carregaShaders();
-    void modelTransform();
+
     void keyPressEvent (QKeyEvent *event);
     GLuint projLoc;
     GLuint viewLoc;
 
     GLuint VAO_Homer;
+    GLuint VAO_Terra;
   
   private:
     int printOglError(const char file[], int line, const char func[]);
 
-    void projectTransform();
-    void viewTransform();
+    // Camera
+    glm::vec3 centre_escena;
+    float     radi_escena;
+    void calcularCentreRadi(glm::vec3 min, glm::vec3 max);
+    void updateCamera();
+    void projectTransform(float FOV, float ra, float zn, float zf);
+    void viewTransform(glm::vec3 OBS, glm::vec3 VRP, glm::vec3 UP);
 
+    // Homer
+    void modelTransformHomer();
     void creaBuffersHomer();
     Model homer;
-    float rotacion = 0.0f;
+    float rotacion = 0;
+
+    // Terra
+    void modelTransformTerra();
+    void creaBuffersTerra();
+
+
+
     
+
 };
