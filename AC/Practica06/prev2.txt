@@ -1,0 +1,22 @@
+Hits: 8, Miss: 12, Total: 20
+20f2e110 L -> l MP: 1079708 l MC:     8 TAG:20f2e byte:10 MISS L:32
+20f2e111 E -> l MP: 1079708 l MC:     8 TAG:20f2e byte:11 HIT 
+20f26152 E -> l MP: 107930a l MC:     a TAG:20f26 byte:12 MISS L:32
+20f2e113 L -> l MP: 1079708 l MC:     8 TAG:20f2e byte:13 HIT 
+20f27155 L -> l MP: 107938a l MC:     a TAG:20f27 byte:15 MISS L:32 E:32 -> 20f26
+20f27155 L -> l MP: 107938a l MC:     a TAG:20f27 byte:15 HIT 
+20f2f116 L -> l MP: 1079788 l MC:     8 TAG:20f2f byte:16 MISS L:32 E:32 -> 20f2e
+20f2e117 E -> l MP: 1079708 l MC:     8 TAG:20f2e byte:17 MISS L:32 -> 20f2f
+20f26158 L -> l MP: 107930a l MC:     a TAG:20f26 byte:18 MISS L:32 -> 20f27
+20f2f119 E -> l MP: 1079788 l MC:     8 TAG:20f2f byte:19 MISS L:32 E:32 -> 20f2e
+50f2e210 L -> l MP: 2879710 l MC:    10 TAG:50f2e byte:10 MISS L:32
+20f2e111 E -> l MP: 1079708 l MC:     8 TAG:20f2e byte:11 MISS L:32 E:32 -> 20f2f
+20f26152 L -> l MP: 107930a l MC:     a TAG:20f26 byte:12 HIT 
+50f2e213 E -> l MP: 2879710 l MC:    10 TAG:50f2e byte:13 HIT 
+20f27155 E -> l MP: 107938a l MC:     a TAG:20f27 byte:15 MISS L:32 -> 20f26
+20f27155 L -> l MP: 107938a l MC:     a TAG:20f27 byte:15 HIT 
+20f2f116 L -> l MP: 1079788 l MC:     8 TAG:20f2f byte:16 MISS L:32 E:32 -> 20f2e
+50f2e217 L -> l MP: 2879710 l MC:    10 TAG:50f2e byte:17 HIT 
+20f26258 L -> l MP: 1079312 l MC:    12 TAG:20f26 byte:18 MISS L:32
+20f2f119 L -> l MP: 1079788 l MC:     8 TAG:20f2f byte:19 HIT 
+Test 0 PASS :-)
