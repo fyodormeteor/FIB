@@ -1,6 +1,5 @@
 // MyGLWidget.cpp
 #include "MyGLWidget.h"
-#include "Model/model.h"
 #include <iostream>
 #include <stdio.h>
 
@@ -71,7 +70,7 @@ void MyGLWidget::creaBuffers() {
 }
 
 void MyGLWidget::creaBuffersHomer() {
-    homer.load("./HomerProves/HomerProves.obj");
+    homer.load("../Models/HomerProves.obj");
 
     // Creació del Vertex Array Object per pintar
     glGenVertexArrays(1, &VAO_Homer);

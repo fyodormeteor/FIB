@@ -1,6 +1,6 @@
 // MyGLWidget.h
 #include "BL2GLWidget.h"
-#include "./Model/model.h"
+#include "../ModelClass/model.h"
 
 class MyGLWidget : public BL2GLWidget {
   Q_OBJECT

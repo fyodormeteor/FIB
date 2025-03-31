@@ -1,6 +1,5 @@
 // MyGLWidget.cpp
 #include "MyGLWidget.h"
-#include "Model/model.h"
 #include <iostream>
 #include <stdio.h>
 
@@ -84,7 +83,7 @@ void MyGLWidget::creaBuffers() {
 }
 
 void MyGLWidget::creaBuffersModelo() {
-    m.load("./Patricio/Patricio.obj");
+    m.load("../Models/Patricio.obj");
 
     // iterar sobre cada vertice y determinar m_min y m_max
     for (unsigned int i = 0; i < m.vertices().size(); i+=3) {
@@ -269,8 +268,15 @@ void MyGLWidget::updateCamera() {
     float z_near = d - radi_escena;
     float z_far  = d + radi_escena;
     if (ortogonal) {
-
-        //projectTransformOrto;
+        float w = radi_escena;
+        float h = radi_escena;
+        if (relacio_aspecte > 1) {
+            w = relacio_aspecte * w;
+        } else if (relacio_aspecte < 1) {
+            h = h / relacio_aspecte;
+        }
+        
+        projectTransformOrto(-w, w, -h, h, z_near, z_far);
     } else {
         float alpha = glm::asin(radi_escena/d);
         if (relacio_aspecte < 1) {
