@@ -9,7 +9,8 @@
                 "/usr/include/qt/QtWidgets",
                 "/usr/include/qt5/QtGui",
                 "/usr/include/qt5",
-                "/usr/include/qt5/QtWidgets"
+                "/usr/include/qt5/QtWidgets",
+                "/usr/include/qt/QtCore"
             ],
             "defines": [],
             "cStandard": "c17",
