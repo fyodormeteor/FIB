@@ -1,4 +1,4 @@
-#include "ui_Form.h"
+#include "ui_MyForm.h"
 
 class MyForm : public QWidget {
     Q_OBJECT

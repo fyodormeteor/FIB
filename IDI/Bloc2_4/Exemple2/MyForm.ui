@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
+    <width>400</width>
     <height>300</height>
    </rect>
   </property>
@@ -15,34 +15,23 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Control d'alçada</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="horizontalSlider">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Text per defecte</string>
+     </property>
+    </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Alçada de metres</string>
+        <string>Entra el nou text:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="spinBox"/>
+      <widget class="MyLineEdit" name="lineEdit"/>
      </item>
     </layout>
    </item>
@@ -53,32 +42,14 @@
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>17</width>
-       <height>157</height>
+       <width>20</width>
+       <height>179</height>
       </size>
      </property>
     </spacer>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QCheckBox" name="checkBox_2">
-         <property name="text">
-          <string>Alpha</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="checkBox">
-         <property name="text">
-          <string>Sigma</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
@@ -95,7 +66,7 @@
      <item>
       <widget class="QPushButton" name="pushButton">
        <property name="text">
-        <string>Exit</string>
+        <string>Quit</string>
        </property>
       </widget>
      </item>
@@ -103,37 +74,48 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>MyLineEdit.h</header>
+   <slots>
+    <signal>returnPressed(QString)</signal>
+    <slot>tractaReturn()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
-   <sender>horizontalSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>spinBox</receiver>
-   <slot>setValue(int)</slot>
+   <sender>lineEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>lineEdit</receiver>
+   <slot>tractaReturn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>13</y>
+     <x>190</x>
+     <y>58</y>
     </hint>
     <hint type="destinationlabel">
-     <x>330</x>
-     <y>54</y>
+     <x>268</x>
+     <y>56</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>spinBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>horizontalSlider</receiver>
-   <slot>setValue(int)</slot>
+   <sender>lineEdit</sender>
+   <signal>returnPressed(QString)</signal>
+   <receiver>label</receiver>
+   <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>488</x>
-     <y>43</y>
+     <x>137</x>
+     <y>41</y>
     </hint>
     <hint type="destinationlabel">
-     <x>481</x>
-     <y>24</y>
+     <x>130</x>
+     <y>15</y>
     </hint>
    </hints>
   </connection>
@@ -144,12 +126,12 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>562</x>
-     <y>270</y>
+     <x>370</x>
+     <y>274</y>
     </hint>
     <hint type="destinationlabel">
-     <x>102</x>
-     <y>0</y>
+     <x>344</x>
+     <y>210</y>
     </hint>
    </hints>
   </connection>
