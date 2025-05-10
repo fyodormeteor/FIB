@@ -12,6 +12,7 @@
         "__bit_reference": "cpp",
         "future": "cpp",
         "ios": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "qlabel": "cpp"
     }
 }
